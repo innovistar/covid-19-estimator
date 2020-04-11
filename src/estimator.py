@@ -1,25 +1,15 @@
 import math
 
 
-print("data")
 name = "Africa"
-print("name:", name)
 avgAge = 19.7
-print("avgAge:", avgAge)
 avgDailyIncomeInUSD = 4
-print("avgDailyIncomeInUSD:", avgDailyIncomeInUSD)
 avgDailyIncomePopulation = 0.73
-print("avgDailyIncomePopulation:", avgDailyIncomePopulation)
 periodType = "days"
-print("periodType:", periodType)
 timeToElapse = 38
-print("timeToElapse:", timeToElapse)
 reportedCases = 2747
-print("reportedCases:", reportedCases)
 population = 92931687
-print("population:", population)
 totalHospitalBeds = 678874
-print("totalHospitalBeds:", totalHospitalBeds)
 
 
 def Impact():
