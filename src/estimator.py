@@ -1,6 +1,14 @@
 import math
 
 
+def estimator():
+  data = dataInput()
+  impact = Impact()
+  severImpact = severeImpact()
+  return data, impact, severImpact 
+
+
+
 name = "Africa"
 avgAge = 19.7
 avgDailyIncomeInUSD = 4
@@ -11,9 +19,27 @@ reportedCases = 2747
 population = 92931687
 totalHospitalBeds = 678874
 
+if periodType == "days":
+    timeToElapse *= 1
+elif periodType == "months":
+    timeToElapse *= 30
+elif periodType == "weeks":
+    timeToElapse *= 7
 
-def Impact():
+
+def dataInput():
+  print("Region:", name)
+  print("avgAge:", avgAge)
+  print("avgDailyIncomeInUSD:", avgDailyIncomeInUSD)
+  print("avgDailyIncomePopulation:", avgDailyIncomePopulation)
+  print("periodType:", periodType)
+  print("timeToElapse:", timeToElapse)
+  print("reportedCases:", reportedCases)
+  print("population:", population)
+  print("totalHospitalBeds:", totalHospitalBeds)
+
   
+def Impact():
   print("Impact")
   currentlyInfected = (reportedCases * 10)
   print("currentlyInfected:", currentlyInfected)
@@ -32,7 +58,7 @@ def Impact():
   print("dollarsInFlight:", dollarsInFlight)
 
 
-def severImpact():
+def severeImpact():
   print("severImpact")
   currentlyInfected = (reportedCases * 50)
   print("currentlyInfected:", currentlyInfected)
@@ -50,7 +76,8 @@ def severImpact():
   dollarsInFlight = round(infectionsByRequestedTime * avgDailyIncomePopulation) * avgDailyIncomeInUSD * timeToElapse
   print("dollarsInFlight:", dollarsInFlight)
 
+  
 
-Impact()
-severImpact()
 
+  
+estimator()
