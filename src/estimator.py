@@ -2,22 +2,9 @@ import math
 
 
 def estimator():
-  data = dataInput()
   impact = Impact()
   severImpact = severeImpact()
-  return data, impact, severImpact 
-
-
-
-name = "Africa"
-avgAge = 19.7
-avgDailyIncomeInUSD = 4
-avgDailyIncomePopulation = 0.73
-periodType = "days"
-timeToElapse = 38
-reportedCases = 2747
-population = 92931687
-totalHospitalBeds = 678874
+  return impact, severImpact 
 
 if periodType == "days":
     timeToElapse *= 1
@@ -27,54 +14,43 @@ elif periodType == "weeks":
     timeToElapse *= 7
 
 
-def dataInput():
-  print("Region:", name)
-  print("avgAge:", avgAge)
-  print("avgDailyIncomeInUSD:", avgDailyIncomeInUSD)
-  print("avgDailyIncomePopulation:", avgDailyIncomePopulation)
-  print("periodType:", periodType)
-  print("timeToElapse:", timeToElapse)
-  print("reportedCases:", reportedCases)
-  print("population:", population)
-  print("totalHospitalBeds:", totalHospitalBeds)
-
   
 def Impact():
   print("Impact")
   currentlyInfected = (reportedCases * 10)
-  print("currentlyInfected:", currentlyInfected)
+  return currentlyInfected
   infectionsByRequestedTime = currentlyInfected * (2  ** math.trunc
                                                    (timeToElapse / 3))
-  print("infectionsByRequestedTime:", infectionsByRequestedTime)
+  return infectionsByRequestedTime
   severeCasesByRequestedTime = math.trunc(infectionsByRequestedTime * 0.15)
-  print("severeCasesByRequestedTime:", severeCasesByRequestedTime)
+  return severeCasesByRequestedTime
   hospitalBedsByRequestedTime = math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime
-  print("hospitalBedsByRequestedTime:", hospitalBedsByRequestedTime)
+  return hospitalBedsByRequestedTime
   casesForICUByRequestedTime = math.trunc(infectionsByRequestedTime * 0.05)
-  print("casesForICUByRequestedTime:", casesForICUByRequestedTime)
+  return  casesForICUByRequestedTime
   casesForVentilatorsByRequestedTime = math.trunc(infectionsByRequestedTime * 0.02)
-  print("casesForVentilatorsByRequestedTime:", casesForVentilatorsByRequestedTime)
+  return casesForVentilatorsByRequestedTime
   dollarsInFlight = round(infectionsByRequestedTime * avgDailyIncomePopulation) * avgDailyIncomeInUSD * timeToElapse
-  print("dollarsInFlight:", dollarsInFlight)
+  return  dollarsInFlight
 
 
 def severeImpact():
   print("severImpact")
-  currentlyInfected = (reportedCases * 50)
-  print("currentlyInfected:", currentlyInfected)
-  infectionsByRequestedTime = currentlyInfected * (2  ** math.trunc
+  severeCurrentlyInfected = (reportedCases * 50)
+  return  severeCurrentlyInfected
+  InfectionsByRequestedTime = currentlyInfected * (2  ** math.trunc
                                                    (timeToElapse / 3))
-  print("infectionsByRequestedTime:", infectionsByRequestedTime)
-  severeCasesByRequestedTime = math.trunc(infectionsByRequestedTime * 0.15)
-  print("severeCasesByRequestedTime:", severeCasesByRequestedTime)
-  hospitalBedsByRequestedTime = math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime
-  print("hospitalBedsByRequestedTime:", hospitalBedsByRequestedTime)
-  casesForICUByRequestedTime = math.trunc(infectionsByRequestedTime * 0.05)
-  print("casesForICUByRequestedTime:", casesForICUByRequestedTime)
-  casesForVentilatorsByRequestedTime = math.trunc(infectionsByRequestedTime * 0.02)
-  print("casesForVentilatorsByRequestedTime:", casesForVentilatorsByRequestedTime)
-  dollarsInFlight = round(infectionsByRequestedTime * avgDailyIncomePopulation) * avgDailyIncomeInUSD * timeToElapse
-  print("dollarsInFlight:", dollarsInFlight)
+  return InfectionsByRequestedTime 
+  SevereCasesByRequestedTime = math.trunc(infectionsByRequestedTime * 0.15)
+  return SevereCasesByRequestedTime
+  HospitalBedsByRequestedTime = math.trunc(0.35 * totalHospitalBeds) - severeCasesByRequestedTime
+  return HospitalBedsByRequestedTime
+  CasesForICUByRequestedTime = math.trunc(infectionsByRequestedTime * 0.05)
+  return CasesForICUByRequestedTime
+  CasesForVentilatorsByRequestedTime = math.trunc(infectionsByRequestedTime * 0.02)
+  return CasesForVentilatorsByRequestedTime
+  DollarsInFlight = round(infectionsByRequestedTime * avgDailyIncomePopulation) * avgDailyIncomeInUSD * timeToElapse
+  return DollarsInFlight
 
   
 
